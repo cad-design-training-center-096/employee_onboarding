@@ -1,40 +1,57 @@
-📋 Employee Onboarding – CDTC
-Overview
-The Employee Onboarding system is a web-based tool developed to streamline the process of enrolling new employees into the CDTC (CAD Design Training Center) organization. It captures key employee information and securely stores it in a centralized spreadsheet using Google Apps Script integration.
+# 🧾 Employee Onboarding System – CDTC
 
-🔍 Demo
-👉 [Live Demo](https://cad-design-training-center-096.github.io/employee_onboarding/ )
+This is a lightweight, web-based onboarding tool designed to simplify and digitize the employee enrollment process for the **CAD Design Training Center (CDTC)**.
 
-🎯 Purpose
-To simplify and standardize the new employee enrollment process by:
+🔗 **[Live Demo](https://cad-design-training-center-096.github.io/employee_onboarding/)**
 
-Reducing manual data entry.
+---
 
-Minimizing errors and duplication.
+## 📌 Project Purpose
 
-Ensuring that all necessary details are captured consistently.
+The goal of this project is to **automate and streamline the onboarding process** for new employees. It replaces manual data entry with a responsive online form that captures all relevant employee details and stores them directly in a centralized Google Sheet.
 
-📦 Features
-Clean and user-friendly UI for data entry.
+---
 
-Fields for essential employee info:
+## 🧰 Features
 
-Name, Phone, Email, DOB, Department, Mission, Assigned Asset, Drink Preferences.
+✅ User-friendly onboarding form  
+✅ Automatic data storage using Google Sheets  
+✅ Built with HTML, CSS, and JavaScript  
+✅ Backend handled with Google Apps Script  
+✅ Mobile-responsive design  
 
-Integration with Google Sheets to store submitted data automatically.
+---
 
-Lightweight and responsive – works across desktop and mobile.
+## 📥 Data Collected
 
-🛠️ Technologies Used
-Frontend: HTML, CSS, JavaScript
+- Full Name  
+- Phone Number  
+- Email Address  
+- Date of Birth  
+- Department  
+- Mission  
+- Assigned Asset  
+- Preferred Drink Type  
+- Drink Count
 
-Backend: Google Apps Script (addEmployee() function)
+---
 
-Data Storage: Google Sheets (acting as a lightweight backend database)
+## 🚀 How It Works
 
-🚀 How It Works
-The user fills out the onboarding form.
+1. User opens the web-based onboarding form.
+2. Fills out all required employee information.
+3. Upon submission, data is sent to a **Google Apps Script**.
+4. The script appends the data to a **Google Sheet** used by HR/admin teams.
 
-On submission, data is validated and sent via Apps Script.
+---
 
-The script appends the data to a Google Sheet for HR/admin access.
+## 🛠️ Tech Stack
+
+| Layer        | Technology           |
+|--------------|----------------------|
+| Frontend     | HTML, CSS, JavaScript |
+| Backend      | Google Apps Script    |
+| Database     | Google Sheets         |
+| Hosting      | GitHub Pages          |
+
+---
