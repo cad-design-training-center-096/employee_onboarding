@@ -111,13 +111,14 @@
 </head>
 <body>
 
-<header>
+  <header>
+  <img src="./icon.png" alt="">
     <h1>CDTC Employee Information Form</h1>
     <p>Please fill in all the required fields marked with <span style="color:red;">*</span> to complete your submission.</p>
   </header>
 
 
-  <form onsubmit="return validateForm()">
+  <form  onsubmit="return validateForm()">
     <label for="name" class="required">Full Name</label>
     <input type="text" id="name" name="name" required />
 
@@ -140,10 +141,14 @@
       <option value="HR/Manager">Techinical</option>
     </select>
 
-    <label for="mission" class="required">What Inspired You to Join CDTC?</label>
-    <textarea id="mission" name="mission" required placeholder="Share your motivation or vision that led you to become a part of CDTC."></textarea>
+    <label for="mission" class="required">
+      What excites you most about joining CDTC, and what is your vision for contributing to the organization's growth?
+    </label>
+    <textarea id="mission" name="mission" required
+      placeholder="Describe what motivated you to join CDTC and how you hope to contribute to its growth."></textarea>
 
-    <label for="asset" class="required">In What Ways Will You Add Value to CDTC?</label>
+
+    <label for="asset" class="required">In What Ways Will You be an Asset to CDTC?</label>
     <textarea id="asset" name="asset" required placeholder="Tell us about your strengths, skills, or qualities that will benefit our mission."></textarea>
 
     <label for="drinkType" class="required">What’s Your Go-To Beverage?</label>
@@ -183,37 +188,17 @@
     <div class="button-wrapper">
       <button type="submit">Submit Details</button>
     </div>
+
+  <p id="successMessage" style="color: green; display: none;">🎉 Your details have been submitted successfully. Welcome aboard!</p>
+  <p id="errorMessage" style="color: red; display: none;">❌ Something went wrong. Please try again later.</p>
+
+
   </form>
 
   <footer>
     <p>© 2025 CDTC - CAD Design Training Center | All rights reserved</p>
   </footer>
-
-  <script>
-    const drinkCountSelect = document.getElementById('drinkCount');
-    const drinkMessage = document.getElementById('drinkMessage');
-
-    drinkCountSelect.addEventListener('change', function () {
-      const count = parseInt(this.value);
-
-      if (!count) {
-  drinkMessage.textContent = '';
-} else if (count < 4) {
-  drinkMessage.textContent = "Just " + count + "? Clearly, you believe in staying naturally high on productivity. ☀️";
-} else if (count < 6) {
-  drinkMessage.textContent = count + " cups — ah, the beginner level of chai-driven efficiency! You're warming up. ☕";
-} else if (count < 11) {
-  drinkMessage.textContent = count + " cups — You're now operating at peak 'chai pe charcha' bandwidth. True CDTC potential! 🚀";
-} else if (count < 16) {
-  drinkMessage.textContent = count + " cups?! That’s not a caffeine habit — that’s a supply chain! 🏭 Let's hope HR isn't tracking this. 😄";
-} else {
-  drinkMessage.textContent = count + " cups?! At this point, you deserve your own coffee logistics team. Shall we talk vendor contracts next? ☕📋";
-
-}
-
-
-    });
-  </script>
+<script src="./onboard.js"></script>
 
 </body>
 </html>
