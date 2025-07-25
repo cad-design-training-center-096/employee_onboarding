@@ -57,14 +57,21 @@ form.addEventListener('submit', async function (e) {
       
       const result = await response.json();
       console.log('Response:', result);
+      console.log('Response:', result.success);
 
-    if (result.success) {
+    if (result.success === true)
+    {
       successMsg.style.display = 'block';
       form.reset();
       drinkMessage.textContent = '';
-    } else {
-      errorMsg.style.display = 'block';
     }
+    else
+    {
+      errorMsg.innerHTML = result.message; 
+      errorMsg.style.display = 'block';
+      console.log('Error:', result.message);
+    }
+    
   } catch (err) {
     errorMsg.style.display = 'block';
     console.error('Submission error:', err);
