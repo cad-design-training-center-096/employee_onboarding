@@ -10,15 +10,15 @@ drinkCountSelect.addEventListener('change', function () {
   if (!count) {
     drinkMessage.textContent = '';
   } else if (count < 4) {
-    drinkMessage.textContent = "Just " + count + "? Clearly, you believe in staying naturally high on productivity. ☀️";
+    drinkMessage.textContent = `Just ${count}? Clearly, you believe in staying naturally high on productivity. ☀️`;
   } else if (count < 6) {
-    drinkMessage.textContent = count + " cups — ah, the beginner level of chai-driven efficiency! You're warming up. ☕";
+    drinkMessage.textContent = `${count} cups — ah, the beginner level of chai-driven efficiency! You're warming up. ☕`;
   } else if (count < 11) {
-    drinkMessage.textContent = count + " cups — You're now operating at peak 'chai pe charcha' bandwidth. True CDTC potential! 🚀";
+    drinkMessage.textContent = `${count} cups — You're now operating at peak 'chai pe charcha' bandwidth. True CDTC potential! 🚀`;
   } else if (count < 16) {
-    drinkMessage.textContent = count + " cups?! That’s not a caffeine habit — that’s a supply chain! 🏭 Let's hope HR isn't tracking this. 😄";
+    drinkMessage.textContent = `${count} cups?! That’s not a caffeine habit — that’s a supply chain! 🏭 Let's hope HR isn't tracking this. 😄`;
   } else {
-    drinkMessage.textContent = count + " cups?! At this point, you deserve your own coffee logistics team. Shall we talk vendor contracts next? ☕📋";
+    drinkMessage.textContent = `${count} cups?! At this point, you deserve your own coffee logistics team. Shall we talk vendor contracts next? ☕📋`;
   }
 });
 
@@ -29,7 +29,7 @@ form.addEventListener('submit', async function (e) {
   errorMsg.style.display = 'none';
 
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting...';
+  submitBtn.innerHTML = 'Submitting... <span class="spinner"></span>';
 
   const formData = {
     name: document.getElementById('name').value.trim(),
@@ -45,7 +45,6 @@ form.addEventListener('submit', async function (e) {
 
   const payload = new URLSearchParams();
   payload.append('Data', JSON.stringify(formData));
-  console.log('Response:', payload.toString());
 
   try {
     const response = await fetch('https://script.google.com/macros/s/AKfycbzNdO2ogQt_Se54C9QTn0mIzqmJy7E0OBBdzK48Up3cJAMsOIQL-rtNktKHlhwKkxbGBw/exec', {
@@ -54,35 +53,31 @@ form.addEventListener('submit', async function (e) {
       body: payload
     });
 
-      
-      const result = await response.json();
-      console.log('Response:', result);
-      console.log('Response:', result.success);
+    const result = await response.json();
 
-    if (result.success === true)
-    {
-      successMsg.style.display = 'block';
-      form.reset();
-      drinkMessage.textContent = '';
-    }
-    else
-    {
-      errorMsg.innerHTML = result.message; 
-      errorMsg.style.display = 'block';
-      console.log('Error:', result.message);
-    }
-    
+  if (result.success) {
+    successMsg.style.display = 'block';
+    successMsg.innerHTML = result.message;
+    errorMsg.style.display = 'none';   // Hide error on success!
+  //  form.reset();
+    drinkMessage.textContent = '';
+  } else {
+    errorMsg.textContent = result.message || 'Submission failed.';
+    errorMsg.style.display = 'block';
+    successMsg.style.display = 'none'; // Hide success on error!
+    console.error('Error:', result.message);
+  }
+
   } catch (err) {
+    errorMsg.textContent = 'Something went wrong. Please try again later.';
     errorMsg.style.display = 'block';
     console.error('Submission error:', err);
   } finally {
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Details';
+    submitBtn.innerHTML = 'Submit Details';
   }
 });
 
 function validateForm() {
-  // Put your validation logic here.
-  // Return true to submit, false to prevent submit.
-  return true; // for now, just allow submission
+  return true;
 }
